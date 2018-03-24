@@ -48,6 +48,7 @@ Pod ocenę będą brane pod uwagę następujące elementy:
 Ponadto dodatkowo pod uwagę będą brane następujące elementy: 
 
 - (1 pkt) Użycie biblioteki AssertJ.
+- (1 pkt) Skonfigurowanie TravisCI do automatycznego budowania projektu.
 - (1 pkt) Zastosowanie testów parametrycznych przy użyciu plików testowych.
 - (1 pkt) Zastosowanie JAVA 8 lub wyżej.
 - (2 pkt) Użycie typu generycznego.
@@ -103,6 +104,7 @@ Pod ocenę będą brane pod uwagę następujące elementy:
 Ponadto dodatkowo pod uwagę będą brane następujące elementy: 
 
 - (1 pkt) Użycie biblioteki AssertJ.
+- (1 pkt) Skonfigurowanie TravisCI do automatycznego budowania projektu.
 - (1 pkt) Zastosowanie testów parametrycznych przy użyciu plików testowych.
 - (1 pkt) Zastosowanie JAVA 8 lub wyżej.
 - (2 pkt) Użycie innych technologii nie pokazywanych na zajęciach.
@@ -139,6 +141,7 @@ Pod ocenę będą brane pod uwagę następujące elementy:
 Ponadto dodatkowo pod uwagę będą brane następujące elementy: 
 
 - (1 pkt) Użycie biblioteki AssertJ.
+- (1 pkt) Skonfigurowanie TravisCI do automatycznego budowania projektu.
 - (1 pkt) Zastosowanie testów parametrycznych przy użyciu plików testowych.
 - (1 pkt) Zastosowanie JAVA 8 lub wyżej.
 - (2 pkt) Zastosowanie planszy większej niż 3x3.
@@ -181,6 +184,7 @@ Pod ocenę będą brane pod uwagę następujące elementy:
 Ponadto dodatkowo pod uwagę będą brane następujące elementy: 
 
 - (1 pkt) Użycie biblioteki AssertJ.
+- (1 pkt) Skonfigurowanie TravisCI do automatycznego budowania projektu.
 - (1 pkt) Zastosowanie testów parametrycznych przy użyciu plików testowych.
 - (1 pkt) Zastosowanie JAVA 8 lub wyżej.
 - (2 pkt) Zastosowanie dodatkowych różnych wymagań do gry.
@@ -231,6 +235,7 @@ Pod ocenę będą brane pod uwagę następujące elementy:
 Ponadto dodatkowo pod uwagę będą brane następujące elementy: 
 
 - (1 pkt) Użycie biblioteki AssertJ.
+- (1 pkt) Skonfigurowanie TravisCI do automatycznego budowania projektu.
 - (1 pkt) Zastosowanie testów parametrycznych przy użyciu plików testowych.
 - (1 pkt) Zastosowanie JAVA 8 lub wyżej.
 - (2 pkt) Użycie planszy dowolnego wymiaru.
@@ -275,6 +280,7 @@ Pod ocenę będą brane pod uwagę następujące elementy:
 Ponadto dodatkowo pod uwagę będą brane następujące elementy: 
 
 - (1 pkt) Użycie biblioteki AssertJ.
+- (1 pkt) Skonfigurowanie TravisCI do automatycznego budowania projektu.
 - (1 pkt) Zastosowanie testów parametrycznych przy użyciu plików testowych.
 - (1 pkt) Zastosowanie JAVA 8 lub wyżej.
 - (2 pkt) Użycie planszy dowolnego wymiaru.
