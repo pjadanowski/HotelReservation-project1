@@ -12,10 +12,10 @@ target**.
 
 3. Przesyłanie projektu będzie odbywało się przy pomocy utworzenia Issue w swoim repozytorium. Utworzenie Issue wiąże się z oddanym projektem. Wszelkie zmiany po Issue będą obcinane.
 
-**TERMIN: 06.04.2018**
+**TERMIN: 09.04.2018**
 
 - **Spóźnienia** z terminem będą wiązały się z **mniejszą ilością punktów**.
-- **Maksymalny deadline** to **09.04.2018** i wtedy obowiązuje **50%** punktów z projektu. A więc dzień zwłoki oznacza obniżenie progu o **10%**. Po tym terminie projekty liczone są na **0%**!
+- **Maksymalny deadline** to **13.04.2018** i wtedy obowiązuje **50%** punktów z projektu. A więc dzień zwłoki oznacza obniżenie progu o **10%**. Po tym terminie projekty liczone są na **0%**!
 - Projekt, w którym nie będzie wykonywało się polecenie **mvn test** będzie liczony na **0%**!
 - Ponadto pod ocenę będzie brany styl projektu: jak zapisane są testy i jak sprawdzane są asercje.
 - Testy powinny wykorzystywać wiele różnych asercji (a nie tylko assertEquals)!
