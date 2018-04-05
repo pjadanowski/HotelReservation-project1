@@ -85,15 +85,18 @@ public class Room {
                 }
             }
         }
+        updateFile(fromFileObject);
+//        System.out.println(fromFileObject.toString());
+    }
+
+    public void updateFile(JsonObject jsonObject){
         try {
             FileWriter fileWriter = new FileWriter(new File(FILE));
-            fileWriter.write(fromFileObject.toString());
+            fileWriter.write(jsonObject.toString());
             fileWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-//        System.out.println(fromFileObject.toString());
     }
-
 
 }
