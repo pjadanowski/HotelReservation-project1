@@ -1,0 +1,6 @@
+{
+  "reservations": [
+    { "customer":{ "firstname":"Jan", "lastname":"Kowalski", "email":"jkowalski@mail.com"} ,
+      "room": "102", "date_from": "2018-02-19", "date_to": "2018-03-19", "reservation_time": "10:00"}
+  ]
+}
