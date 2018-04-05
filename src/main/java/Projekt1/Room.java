@@ -38,7 +38,20 @@ public class Room {
     }
 
     public boolean isAvaliable(){
-        return avaliable;
+        boolean isAvaliable = false;
+        JsonObject fromFileObject = new Gson().fromJson(readFile(FILE), JsonObject.class);
+        JsonArray mainObject = fromFileObject.getAsJsonArray("rooms");
+
+        for (JsonElement room: mainObject) {
+            if (room.isJsonObject())
+            {
+                JsonObject r = room.getAsJsonObject();
+                if (Integer.parseInt(r.get("room").getAsString()) == this.getRoomNumber()){
+                    isAvaliable = Boolean.parseBoolean(r.get("avaliable").getAsString());
+                }
+            }
+        }
+        return isAvaliable;
     }
 
     public String readFile(String fileName){
