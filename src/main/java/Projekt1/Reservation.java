@@ -35,7 +35,7 @@ public class Reservation {
 
         // check if room is avaliable
         if (!room.isAvaliable())
-            throw new IllegalArgumentException("Pokój jest zajęty.");
+//            throw new IllegalArgumentException("Pokój jest zajęty.");
 
         this.reservation_id = uuid();
         this.customer = customer;

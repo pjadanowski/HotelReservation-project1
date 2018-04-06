@@ -20,6 +20,6 @@ public class App
                 LocalDate.of(2018 ,4,10), LocalTime.of(10,0));
 
 
-        String reservationFile = reservation.readFile("src/main/resources/reservations.json");
+        System.out.println(c1.reservedRooms().toString());
     }
 }
