@@ -56,6 +56,8 @@ public class Reservation {
         // save it to file
         updateFile(fromFileObject);
 
+        // set reserved room as unavaliable
+        room.setAvaliable(false);
     }
 
     public String readFile(String fileName){
