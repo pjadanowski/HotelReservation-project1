@@ -35,7 +35,7 @@ public class Reservation {
 
         // check if room is avaliable
         if (!room.isAvaliable())
-//            throw new IllegalArgumentException("Pokój jest zajęty.");
+            throw new IllegalArgumentException("Pokój jest zajęty.");
 
         this.reservation_id = uuid();
         this.customer = customer;
@@ -96,6 +96,21 @@ public class Reservation {
             fileWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void checkDays(LocalDate date) throws IllegalArgumentException{
+        // first check if given date is >= today
+        if(date.isBefore(LocalDate.now()))
+            throw new IllegalArgumentException("Podany dzień już minął");
+
+        // check if is hotel working day
+        JsonObject fromFileObject = new Gson().fromJson(readFile("src/main/resources/freeDays.json"), JsonObject.class);
+        JsonArray mainObject = fromFileObject.getAsJsonArray("freeDays");
+
+        for (JsonElement day: mainObject) {
+            if (date.isEqual(LocalDate.parse(day.getAsString())))
+                throw new IllegalArgumentException("W tym dniu hotel jest nieczynny.");
         }
     }
 }
