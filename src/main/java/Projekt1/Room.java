@@ -29,12 +29,22 @@ public class Room {
         return roomNumber;
     }
 
-    public void setRoomNumber(int roomNumber) {
-        this.roomNumber = roomNumber;
-    }
-
     public void setAvaliable(boolean avaliable) {
-        this.avaliable = avaliable;
+
+            JsonObject fromFileObject = new Gson().fromJson(readFile(FILE), JsonObject.class);
+            JsonArray mainObject = fromFileObject.getAsJsonArray("rooms");
+
+            for (JsonElement room: mainObject) {
+                if (room.isJsonObject())
+                {
+                    JsonObject r = room.getAsJsonObject();
+                    if (Integer.parseInt(r.get("room").getAsString()) == this.getRoomNumber()){
+                        r.remove("avaliable");
+                        r.addProperty("avaliable", avaliable);
+                    }
+                }
+            }
+            updateFile(fromFileObject);
     }
 
     public boolean isAvaliable(){
