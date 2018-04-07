@@ -80,24 +80,6 @@ public class Room {
         return contentBuilder.toString();
     }
 
-    public void markRoomAsUnavaliable(){
-//        Room[] rooms = new Gson().fromJson(this.readFile(FILE), Room[].class);
-        JsonObject fromFileObject = new Gson().fromJson(readFile(FILE), JsonObject.class);
-        JsonArray mainObject = fromFileObject.getAsJsonArray("rooms");
-
-        for (JsonElement room: mainObject) {
-            if (room.isJsonObject())
-            {
-                JsonObject r = room.getAsJsonObject();
-                if (Integer.parseInt(r.get("room").getAsString()) == this.getRoomNumber()){
-                    r.remove("avaliable");
-                    r.addProperty("avaliable", false);
-                }
-            }
-        }
-        updateFile(fromFileObject);
-//        System.out.println(fromFileObject.toString());
-    }
 
     public void updateFile(JsonObject jsonObject){
         try {
