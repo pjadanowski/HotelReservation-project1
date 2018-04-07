@@ -37,6 +37,8 @@ public class Reservation {
         if (!room.isAvaliable())
             throw new IllegalArgumentException("Pokój jest zajęty.");
 
+        checkWorkingDays(from_date);
+
         this.reservation_id = uuid();
         this.customer = customer;
         this.room = room;
@@ -76,10 +78,6 @@ public class Reservation {
         return contentBuilder.toString();
     }
 
-    public void writeToFile(String filename, boolean overwritten){
-
-    }
-
 
     public String uuid(){
 //        String uuid = UUID.randomUUID().toString();
@@ -99,7 +97,7 @@ public class Reservation {
         }
     }
 
-    public void checkDays(LocalDate date) throws IllegalArgumentException{
+    public void checkWorkingDays(LocalDate date) throws IllegalArgumentException{
         // first check if given date is >= today
         if(date.isBefore(LocalDate.now()))
             throw new IllegalArgumentException("Podany dzień już minął");

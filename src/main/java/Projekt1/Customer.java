@@ -76,6 +76,10 @@ public class Customer {
         return rooms;
     }
 
+    public void printReservedRooms(){
+        this.reservedRooms().forEach(room -> System.out.print(room.getRoomNumber()+", "));
+    }
+
 
 
     public String readFile(String fileName){

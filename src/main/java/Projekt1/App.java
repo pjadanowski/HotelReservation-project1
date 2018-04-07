@@ -16,15 +16,17 @@ public class App
         Customer c1 = new Customer("Kazik", "Jakistam", "kjakistam@ss.ss");
         Room r100 = new Room(100, true);
         Room r101 = new Room(101, true);
+        Room r102 = new Room(102, true);
 //        r100.markRoomAsUnavaliable();
 
 //        Reservation reservation = new Reservation(c1, r101, LocalDate.of(2018 ,4,1),
 //                LocalDate.of(2018 ,4,10), LocalTime.of(10,0));
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-mm-dd");
-        if (LocalDate.now().isEqual(LocalDate.parse("2018-04-06"))){
-            System.out.println("tak");
-        }
-//        System.out.println(c1.reservedRooms().toString());
+
+//        c1.printReservedRooms();
+//                Reservation reservation = new Reservation(c1, r102, LocalDate.of(2018 ,4,7),
+//                LocalDate.of(2018 ,4,10), LocalTime.of(10,0));
+
+        c1.printReservedRooms();
     }
 }
