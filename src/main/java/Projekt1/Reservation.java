@@ -16,7 +16,7 @@ import java.time.LocalTime;
 import java.util.stream.Stream;
 import java.util.UUID;
 
-public class Reservation{
+public class Reservation {
 
     public static String FILE = "src/main/resources/reservations.json";
 
@@ -27,21 +27,24 @@ public class Reservation{
     LocalDate to_date;
     LocalTime reservation_time;
 
-    public Reservation(){}
+    public Reservation() {
+    }
 
-    public Reservation(Customer customer, Room room, LocalDate from_date, LocalDate to_date, LocalTime reservation_time) {
+    public Reservation(Customer customer, Room room, LocalDate from_date, LocalDate to_date, LocalTime reservation_time) throws IOException {
         if (!(reservation_time.getMinute() == 0 || reservation_time.getMinute() == 30))
             throw new IllegalArgumentException("Rezerwacje tylko o pełnych godzinach lub 30 po");
 
         // check if room is avaliable
+
+        if (!room.isAvaliable())
+            throw new IllegalArgumentException("Pokój jest zajęty.");
+
+
         try {
-            if (!room.isAvaliable())
-                throw new IllegalArgumentException("Pokój jest zajęty.");
+            checkWorkingDays(from_date);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        checkWorkingDays(from_date);
 
         this.reservation_id = uuid();
         this.customer = customer;
@@ -52,11 +55,16 @@ public class Reservation{
 
 
         // open existing file
-        JsonObject fromFileObject = new Gson().fromJson(readFile(FILE), JsonObject.class);
+        JsonObject fromFileObject = null;
+        try {
+            fromFileObject = new Gson().fromJson(Helper.readFile(FILE), JsonObject.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         JsonArray mainObject = fromFileObject.getAsJsonArray("reservations");
 
         // Reservation to json
-        String reservation  = new Gson().toJson(this);
+        String reservation = new Gson().toJson(this);
         JsonObject r = new Gson().fromJson(reservation, JsonObject.class);
         mainObject.add(r);
         // save it to file
@@ -70,43 +78,41 @@ public class Reservation{
         }
     }
 
-    public String readFile(String fileName){
+//    public String readFile(String fileName){
+//
+//        StringBuilder contentBuilder = new StringBuilder();
+//
+//        try (Stream<String> stream = Files.lines( Paths.get(fileName), StandardCharsets.UTF_8))
+//        {
+//            stream.forEach(s -> contentBuilder.append(s).append("\n"));
+//        }
+//        catch (IOException e)
+//        {
+//            e.printStackTrace();
+//        }
+//
+//        return contentBuilder.toString();
+//    }
 
-        StringBuilder contentBuilder = new StringBuilder();
 
-        try (Stream<String> stream = Files.lines( Paths.get(fileName), StandardCharsets.UTF_8))
-        {
-            stream.forEach(s -> contentBuilder.append(s).append("\n"));
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
-
-        return contentBuilder.toString();
-    }
-
-
-    public String uuid(){
+    public String uuid() {
 //        String uuid = UUID.randomUUID().toString();
         String uuid = UUID.randomUUID().toString().replaceAll("-", "");
-        String substr = uuid.substring(0,5);
+        String substr = uuid.substring(0, 5);
         return substr;
     }
 
 
-
-
-    public void checkWorkingDays(LocalDate date) throws IllegalArgumentException{
+    public void checkWorkingDays(LocalDate date) throws IllegalArgumentException, IOException {
         // first check if given date is >= today
-        if(date.isBefore(LocalDate.now()))
+        if (date.isBefore(LocalDate.now()))
             throw new IllegalArgumentException("Podany dzień już minął");
 
         // check if is hotel working day
-        JsonObject fromFileObject = new Gson().fromJson(readFile("src/main/resources/freeDays.json"), JsonObject.class);
+        JsonObject fromFileObject = new Gson().fromJson(Helper.readFile("src/main/resources/freeDays.json"), JsonObject.class);
         JsonArray mainObject = fromFileObject.getAsJsonArray("freeDays");
 
-        for (JsonElement day: mainObject) {
+        for (JsonElement day : mainObject) {
             if (date.isEqual(LocalDate.parse(day.getAsString())))
                 throw new IllegalArgumentException("W tym dniu hotel jest nieczynny.");
         }

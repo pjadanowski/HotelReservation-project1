@@ -23,12 +23,5 @@ public class CustomerTest {
         Customer customer = new Customer("Kazik", "Jakistam", "kjakistam@ss.ss");
     }
 
-    @Test
-    void readFileNoSuchFileException() {
-        Customer customer = new Customer("Kazik", "Jakistam", "kjakistam@ss.ss");
-
-        assertThrows(NoSuchFileException.class,
-                () -> customer.readFile("nie_ma_takiego_pliku.json"));
-    }
 
 }

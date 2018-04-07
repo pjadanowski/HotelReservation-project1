@@ -5,39 +5,29 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.NoSuchFileException;
-import java.text.SimpleDateFormat;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.hamcrest.Matchers.*;
 
 public class RoomTest {
 
     @Test
-    void setAvaliableTest() {
-       Room r110 = new Room(110, false);
+    void setAvaliableTest() throws IOException {
+        Room r110 = new Room(110, false);
 
-        try {
-            r110.setAvaliable(true);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        r110.setAvaliable(true);
 
-        try {
-            assertFalse(r110.isAvaliable());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        assertFalse(r110.isAvaliable());
+
     }
 
     @Test
-    void getRoomNumberTest(){
+    void getRoomNumberTest() {
         Room r110 = new Room(110, false);
         assertThat(r110.getRoomNumber(), is(110));
     }
@@ -65,22 +55,26 @@ public class RoomTest {
     }
 
     @Test
-    void updateFileTest() throws IOException {
-        Room r110 = new Room(110, false);
-
+    void updateFileTest() throws IOException, IllegalArgumentException {
         String FILE = "src/main/resources/rooms.json";
-        JsonObject fromFileObject = new Gson().fromJson(Helper.readFile(FILE), JsonObject.class);
-        r110.setAvaliable(true);
-        Helper.updateFile(FILE, fromFileObject);
 
-        // open file
-        JsonObject fromFileAfter = new Gson().fromJson(Helper.readFile(FILE), JsonObject.class);
+        JsonObject fromFileBefore = new Gson().fromJson(Helper.readFile(FILE), JsonObject.class);
 
-        for (JsonElement room:fromFileAfter.get("rooms").getAsJsonArray() ) {
-//            if (room.getAsJsonObject().get("room"))
+        try {
+            Room r110 = new Room(110, false);
+            r110.setAvaliable(true);
+
+            // open file after
+            JsonObject fromFileAfter = new Gson().fromJson(Helper.readFile(FILE), JsonObject.class);
+
+            boolean ava = fromFileAfter.equals(fromFileBefore);
+
+            // check if updated contains room updated
+            assertThat(ava, is(false));
+        } catch (IllegalArgumentException e) {
+            assertTrue(true);
         }
-        // check if updated contains room updated
-//        assertThat(fromFileAfter.getAsString(), contains(""));
+
     }
 
 }

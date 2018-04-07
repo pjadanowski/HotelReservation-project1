@@ -4,19 +4,44 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+
 import java.io.IOException;
 
 
 public class Room {
 
-    private static  String FILE = "src/main/resources/rooms.json";
+    private static String FILE = "src/main/resources/rooms.json";
     private int roomNumber;
     private boolean avaliable;
 
 
-    public Room(int roomNumber , boolean avaliable) {
-        this.roomNumber = roomNumber;
-        this.avaliable = avaliable;
+    public Room(int roomNumber, boolean avaliable) {
+
+        try {
+            this.roomNumber = roomNumber;
+            this.avaliable = avaliable;
+
+            checkIfRoomExistsInJson();
+
+            // open existing file
+            JsonObject fromFileObject = null;
+            try {
+                fromFileObject = new Gson().fromJson(Helper.readFile(FILE), JsonObject.class);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            JsonArray mainObject = fromFileObject.getAsJsonArray("rooms");
+
+            // Rooms to json
+            String reservation = new Gson().toJson(this);
+            JsonObject r = new Gson().fromJson(reservation, JsonObject.class);
+            mainObject.add(r);
+            // save it to file
+            Helper.updateFile(FILE, fromFileObject);
+        } catch (IllegalArgumentException e) {
+//            e.printStackTrace();
+            throw new IllegalArgumentException();
+        }
     }
 
     public int getRoomNumber() {
@@ -30,20 +55,19 @@ public class Room {
 
     public void setAvaliable(boolean avaliable) throws IOException {
 
-            JsonObject fromFileObject = new Gson().fromJson(Helper.readFile(FILE), JsonObject.class);
-            JsonArray mainObject = fromFileObject.getAsJsonArray("rooms");
+        JsonObject fromFileObject = new Gson().fromJson(Helper.readFile(FILE), JsonObject.class);
+        JsonArray mainObject = fromFileObject.getAsJsonArray("rooms");
 
-            for (JsonElement room: mainObject) {
-                if (room.isJsonObject())
-                {
-                    JsonObject r = room.getAsJsonObject();
-                    if (Integer.parseInt(r.get("room").getAsString()) == this.getRoomNumber()){
-                        r.remove("avaliable");
-                        r.addProperty("avaliable", avaliable);
-                    }
+        for (JsonElement room : mainObject) {
+            if (room.isJsonObject()) {
+                JsonObject r = room.getAsJsonObject();
+                if (Integer.parseInt(r.get("roomNumber").getAsString()) == this.getRoomNumber()) {
+                    r.remove("avaliable");
+                    r.addProperty("avaliable", avaliable);
                 }
             }
-            Helper.updateFile(FILE, fromFileObject);
+        }
+        Helper.updateFile(FILE, fromFileObject);
     }
 
     public boolean isAvaliable() throws IOException {
@@ -51,11 +75,10 @@ public class Room {
         JsonObject fromFileObject = new Gson().fromJson(Helper.readFile(FILE), JsonObject.class);
         JsonArray mainObject = fromFileObject.getAsJsonArray("rooms");
 
-        for (JsonElement room: mainObject) {
-            if (room.isJsonObject())
-            {
+        for (JsonElement room : mainObject) {
+            if (room.isJsonObject()) {
                 JsonObject r = room.getAsJsonObject();
-                if (Integer.parseInt(r.get("room").getAsString()) == this.getRoomNumber()){
+                if (Integer.parseInt(r.get("roomNumber").getAsString()) == this.getRoomNumber()) {
                     isAvaliable = Boolean.parseBoolean(r.get("avaliable").getAsString());
                 }
             }
@@ -64,6 +87,22 @@ public class Room {
     }
 
 
+    public void checkIfRoomExistsInJson() throws IllegalArgumentException {
+        try {
+            JsonObject fromFileObject = new Gson().fromJson(Helper.readFile(FILE), JsonObject.class);
+            JsonArray mainObject = fromFileObject.getAsJsonArray("rooms");
 
+            for (JsonElement room : mainObject) {
+                if (room.isJsonObject()) {
+                    JsonObject r = room.getAsJsonObject();
+                    if (r.get("roomNumber").getAsInt() == this.getRoomNumber()) {
+                        throw new IllegalArgumentException("Pokój jest już na liście.");
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 }
