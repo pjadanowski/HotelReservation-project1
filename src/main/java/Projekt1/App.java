@@ -1,5 +1,10 @@
 package Projekt1;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+
+import java.io.File;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.Period;
@@ -27,6 +32,13 @@ public class App
 //                Reservation reservation = new Reservation(c1, r102, LocalDate.of(2018 ,4,7),
 //                LocalDate.of(2018 ,4,10), LocalTime.of(10,0));
 
-        c1.printReservedRooms();
+//        c1.printReservedRooms();
+        String FILE = "src/main/resources/rooms.json";
+        File file = new File(FILE);
+//        JsonObject fromFileObject = new Gson().fromJson(r100.readFile(FILE), JsonObject.class);
+//        r100.setAvaliable(true);
+//        r100.updateFile(fromFileObject);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
+        System.out.println(sdf.format(file.lastModified()));
     }
 }

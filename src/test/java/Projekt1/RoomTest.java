@@ -3,12 +3,15 @@ package Projekt1;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.NoSuchFileException;
+import java.text.SimpleDateFormat;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,9 +23,17 @@ public class RoomTest {
     void setAvaliableTest() {
        Room r110 = new Room(110, false);
 
-       r110.setAvaliable(true);
+        try {
+            r110.setAvaliable(true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-       assertFalse(r110.isAvaliable());
+        try {
+            assertFalse(r110.isAvaliable());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
@@ -32,28 +43,44 @@ public class RoomTest {
     }
 
     @Test
-    void jsonObjectFromFileTest(){
-        Room r110 = new Room(110, false);
+    void jsonObjectFromFileTest() throws IOException {
         String FILE = "src/main/resources/rooms.json";
-        JsonObject fromFileObject = new Gson().fromJson(r110.readFile(FILE), JsonObject.class);
+        JsonObject fromFileObject = new Gson().fromJson(Helper.readFile(FILE), JsonObject.class);
 
         assertTrue(fromFileObject.isJsonObject());
     }
 
     @Test
-    void jsonArrayFromFileTest(){
-        Room r110 = new Room(110, false);
+    void jsonArrayFromFileTest() throws IOException {
         String FILE = "src/main/resources/rooms.json";
-        JsonObject fromFileObject = new Gson().fromJson(r110.readFile(FILE), JsonObject.class);
+        JsonObject fromFileObject = new Gson().fromJson(Helper.readFile(FILE), JsonObject.class);
         JsonArray mainObject = fromFileObject.getAsJsonArray("rooms");
         assertTrue(mainObject.isJsonArray());
     }
 
     @Test
     void readFileNoSuchFileException() {
-        Room r110 = new Room(110, false);
         assertThrows(NoSuchFileException.class,
-                () -> r110.readFile("nie_ma_takiego_pliku.json"));
+                () -> Helper.readFile("nie_ma_takiego_pliku.json"));
+    }
+
+    @Test
+    void updateFileTest() throws IOException {
+        Room r110 = new Room(110, false);
+
+        String FILE = "src/main/resources/rooms.json";
+        JsonObject fromFileObject = new Gson().fromJson(Helper.readFile(FILE), JsonObject.class);
+        r110.setAvaliable(true);
+        Helper.updateFile(FILE, fromFileObject);
+
+        // open file
+        JsonObject fromFileAfter = new Gson().fromJson(Helper.readFile(FILE), JsonObject.class);
+
+        for (JsonElement room:fromFileAfter.get("rooms").getAsJsonArray() ) {
+//            if (room.getAsJsonObject().get("room"))
+        }
+        // check if updated contains room updated
+//        assertThat(fromFileAfter.getAsString(), contains(""));
     }
 
 }

@@ -4,14 +4,8 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.stream.Stream;
+
 
 public class Room {
 
@@ -29,9 +23,14 @@ public class Room {
         return roomNumber;
     }
 
-    public void setAvaliable(boolean avaliable) {
+    public static String getFILE() {
+        return FILE;
+    }
 
-            JsonObject fromFileObject = new Gson().fromJson(readFile(FILE), JsonObject.class);
+
+    public void setAvaliable(boolean avaliable) throws IOException {
+
+            JsonObject fromFileObject = new Gson().fromJson(Helper.readFile(FILE), JsonObject.class);
             JsonArray mainObject = fromFileObject.getAsJsonArray("rooms");
 
             for (JsonElement room: mainObject) {
@@ -44,12 +43,12 @@ public class Room {
                     }
                 }
             }
-            updateFile(fromFileObject);
+            Helper.updateFile(FILE, fromFileObject);
     }
 
-    public boolean isAvaliable(){
+    public boolean isAvaliable() throws IOException {
         boolean isAvaliable = false;
-        JsonObject fromFileObject = new Gson().fromJson(readFile(FILE), JsonObject.class);
+        JsonObject fromFileObject = new Gson().fromJson(Helper.readFile(FILE), JsonObject.class);
         JsonArray mainObject = fromFileObject.getAsJsonArray("rooms");
 
         for (JsonElement room: mainObject) {
@@ -64,31 +63,7 @@ public class Room {
         return isAvaliable;
     }
 
-    public String readFile(String fileName){
-
-        StringBuilder contentBuilder = new StringBuilder();
-
-        try (Stream<String> stream = Files.lines( Paths.get(fileName), StandardCharsets.UTF_8))
-        {
-            stream.forEach(s -> contentBuilder.append(s).append("\n"));
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
-
-        return contentBuilder.toString();
-    }
 
 
-    public void updateFile(JsonObject jsonObject){
-        try {
-            FileWriter fileWriter = new FileWriter(new File(FILE));
-            fileWriter.write(jsonObject.toString());
-            fileWriter.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
 }

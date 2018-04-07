@@ -16,7 +16,7 @@ import java.time.LocalTime;
 import java.util.stream.Stream;
 import java.util.UUID;
 
-public class Reservation {
+public class Reservation{
 
     public static String FILE = "src/main/resources/reservations.json";
 
@@ -34,8 +34,12 @@ public class Reservation {
             throw new IllegalArgumentException("Rezerwacje tylko o pełnych godzinach lub 30 po");
 
         // check if room is avaliable
-        if (!room.isAvaliable())
-            throw new IllegalArgumentException("Pokój jest zajęty.");
+        try {
+            if (!room.isAvaliable())
+                throw new IllegalArgumentException("Pokój jest zajęty.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         checkWorkingDays(from_date);
 
@@ -56,10 +60,14 @@ public class Reservation {
         JsonObject r = new Gson().fromJson(reservation, JsonObject.class);
         mainObject.add(r);
         // save it to file
-        updateFile(fromFileObject);
+        Helper.updateFile(FILE, fromFileObject);
 
         // set reserved room as unavaliable
-        room.setAvaliable(false);
+        try {
+            room.setAvaliable(false);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public String readFile(String fileName){
@@ -87,15 +95,7 @@ public class Reservation {
     }
 
 
-    public void updateFile(JsonObject jsonObject){
-        try {
-            FileWriter fileWriter = new FileWriter(new File(FILE));
-            fileWriter.write(jsonObject.toString());
-            fileWriter.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+
 
     public void checkWorkingDays(LocalDate date) throws IllegalArgumentException{
         // first check if given date is >= today
