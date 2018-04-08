@@ -16,34 +16,8 @@ public class Room {
 
 
     public Room(int roomNumber, boolean avaliable) {
-
-        try {
-            this.roomNumber = roomNumber;
-            this.avaliable = avaliable;
-
-            checkIfRoomExistsInJson();
-
-            // open existing file
-            JsonObject fromFileObject = null;
-            try {
-                fromFileObject = new Gson().fromJson(Helper.readFile(FILE), JsonObject.class);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            JsonArray mainObject = fromFileObject.getAsJsonArray("rooms");
-
-            // Rooms to json
-            String reservation = new Gson().toJson(this);
-            JsonObject r = new Gson().fromJson(reservation, JsonObject.class);
-            mainObject.add(r);
-            // save it to file
-            Helper.updateFile(FILE, fromFileObject);
-        } catch (IllegalArgumentException e) {
-//            e.printStackTrace();
-            throw new IllegalArgumentException();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        this.roomNumber = roomNumber;
+        this.avaliable = avaliable;
     }
 
     public int getRoomNumber() {
@@ -107,4 +81,28 @@ public class Room {
         }
     }
 
+
+    public void saveRoomToJson() {
+
+        checkIfRoomExistsInJson();
+        try {
+            // open existing file
+            JsonObject fromFileObject = null;
+            try {
+                fromFileObject = new Gson().fromJson(Helper.readFile(FILE), JsonObject.class);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            JsonArray mainObject = fromFileObject.getAsJsonArray("rooms");
+
+            // Rooms to json
+            String reservation = new Gson().toJson(this);
+            JsonObject r = new Gson().fromJson(reservation, JsonObject.class);
+            mainObject.add(r);
+            // save it to file
+            Helper.updateFile(FILE, fromFileObject);
+        } catch (IllegalArgumentException | IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

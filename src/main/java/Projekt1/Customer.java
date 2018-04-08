@@ -36,24 +36,27 @@ public class Customer {
     }
 
 
-
-    public ArrayList<Room> reservedRooms(){
+    public ArrayList<Room> reservedRooms() throws NullPointerException {
         ArrayList<Room> rooms = new ArrayList<>();
-
-        JsonObject fromFileObject = new Gson().fromJson(readFile("src/main/resources/reservations.json"), JsonObject.class);
+        JsonObject fromFileObject = null;
+        try {
+            fromFileObject = new Gson().fromJson(Helper.readFile("src/main/resources/reservations.json"), JsonObject.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        assert fromFileObject != null;
         JsonArray mainObject = fromFileObject.getAsJsonArray("reservations");
 
-        for (JsonElement reserv: mainObject) {
-            if (reserv.isJsonObject())
-            {
+        for (JsonElement reserv : mainObject) {
+            if (reserv.isJsonObject()) {
                 JsonObject reservation = reserv.getAsJsonObject();
                 JsonObject customer = reservation.getAsJsonObject("customer");
-                if (customer.get("firstname").getAsString().equalsIgnoreCase(this.getFirstname() )
+                if (customer.get("firstname").getAsString().equalsIgnoreCase(this.getFirstname())
                         &&
-                        (customer.get("lastname").getAsString().equalsIgnoreCase(this.getLastname() )   )){
-                   JsonObject room = (JsonObject) reservation.get("room");
-                   Room room1 = new Room(room.get("roomNumber").getAsInt(), room.get("avaliable").getAsBoolean());
-                   rooms.add(room1);
+                        (customer.get("lastname").getAsString().equalsIgnoreCase(this.getLastname()))) {
+                    JsonObject room = (JsonObject) reservation.get("room");
+                    Room room1 = new Room(room.get("roomNumber").getAsInt(), room.get("avaliable").getAsBoolean());
+                    rooms.add(room1);
                 }
             }
         }
@@ -61,25 +64,9 @@ public class Customer {
         return rooms;
     }
 
-    public void printReservedRooms(){
-        this.reservedRooms().forEach(room -> System.out.print(room.getRoomNumber()+", "));
-    }
+//    public void printReservedRooms(){
+//        this.reservedRooms().forEach(room -> System.out.print(room.getRoomNumber()+", "));
+//    }
 
 
-
-    public String readFile(String fileName){
-
-        StringBuilder contentBuilder = new StringBuilder();
-
-        try (Stream<String> stream = Files.lines( Paths.get(fileName), StandardCharsets.UTF_8))
-        {
-            stream.forEach(s -> contentBuilder.append(s).append("\n"));
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
-
-        return contentBuilder.toString();
-    }
 }

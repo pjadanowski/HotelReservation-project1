@@ -1,5 +1,6 @@
 package Projekt1;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import org.junit.jupiter.api.Test;
 
@@ -30,6 +31,23 @@ public class HelperTest {
 
     @Test
     void updateFileTest() {
+        String file = "src/main/resources/updateTestFile.json";
+        JsonObject object = new JsonObject();
+        object.addProperty("Test", true);
+        try {
+            Helper.updateFile(file, object);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            JsonObject afterAdding = new Gson().fromJson(Helper.readFile(file), JsonObject.class);
+            assertThat(afterAdding.toString()).isEqualTo(object.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
 
     }
 
