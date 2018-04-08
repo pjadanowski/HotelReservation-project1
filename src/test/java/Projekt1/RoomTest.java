@@ -20,11 +20,8 @@ public class RoomTest {
     @Test
     void setAvaliableTest() throws IOException {
         Room r110 = new Room(110, false);
-
         r110.setAvaliable(true);
-
-        assertFalse(r110.isAvaliable());
-
+        assertTrue(r110.isAvaliable());
     }
 
     @Test
@@ -55,28 +52,12 @@ public class RoomTest {
                 () -> Helper.readFile("nie_ma_takiego_pliku.json"));
     }
 
+
     @Test
-    void updateFileTest() throws IOException, IllegalArgumentException {
-        String FILE = "src/main/resources/rooms.json";
+    void checkIfRoomExistsInJsonTest() {
 
-        JsonObject fromFileBefore = new Gson().fromJson(Helper.readFile(FILE), JsonObject.class);
-
-        try {
-            Room r110 = new Room(110, false);
-            r110.setAvaliable(true);
-
-            // open file after
-            JsonObject fromFileAfter = new Gson().fromJson(Helper.readFile(FILE), JsonObject.class);
-
-            boolean ava = fromFileAfter.equals(fromFileBefore);
-
-            // check if updated contains room updated
-            assertThat(ava, is(false));
-        } catch (IllegalArgumentException e) {
-//            assertTrue(true);
-            assertThrows(IllegalArgumentException.class, (Executable) e);
-        }
-
+        Room r100 = new Room(100, true);
+        assertThrows(IllegalArgumentException.class,
+                () -> r100.checkIfRoomExistsInJson());
     }
-
 }

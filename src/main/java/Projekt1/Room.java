@@ -24,9 +24,6 @@ public class Room {
         return roomNumber;
     }
 
-    public static String getFILE() {
-        return FILE;
-    }
 
 
     public void setAvaliable(boolean avaliable) throws IOException {
@@ -54,7 +51,7 @@ public class Room {
         for (JsonElement room : mainObject) {
             if (room.isJsonObject()) {
                 JsonObject r = room.getAsJsonObject();
-                if (Integer.parseInt(r.get("roomNumber").getAsString()) == this.getRoomNumber()) {
+                if (r.get("roomNumber").getAsInt() == this.getRoomNumber()) {
                     isAvaliable = Boolean.parseBoolean(r.get("avaliable").getAsString());
                 }
             }
