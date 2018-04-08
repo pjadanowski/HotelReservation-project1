@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="c0778e1a-641a-4ad4-bab1-77824b0e9521" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/target/classes/reservations.json" afterPath="$PROJECT_DIR$/target/classes/reservations.json" />
-      <change beforePath="$PROJECT_DIR$/target/classes/rooms.json" afterPath="$PROJECT_DIR$/target/classes/rooms.json" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/reservations.json" afterPath="$PROJECT_DIR$/src/main/resources/reservations.json" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/rooms.json" afterPath="$PROJECT_DIR$/src/main/resources/rooms.json" />
+      <change beforePath="$PROJECT_DIR$/target/classes/freeDays.json" afterPath="$PROJECT_DIR$/target/classes/freeDays.json" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -94,8 +95,8 @@
       <file leaf-file-name="Reservation.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Projekt1/Reservation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="116" column="83" lean-forward="true" selection-start-line="116" selection-start-column="52" selection-end-line="116" selection-end-column="83" />
+            <state relative-caret-position="126">
+              <caret line="100" column="45" lean-forward="true" selection-start-line="100" selection-start-column="45" selection-end-line="100" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2322#2368#0" expanded="false" />
@@ -104,7 +105,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Room.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Room.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Projekt1/Room.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1610">
@@ -117,11 +118,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReservationTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ReservationTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/Projekt1/ReservationTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="139">
-              <caret line="103" column="10" lean-forward="false" selection-start-line="103" selection-start-column="10" selection-end-line="103" selection-end-column="10" />
+            <state relative-caret-position="1357">
+              <caret line="107" column="1" lean-forward="true" selection-start-line="107" selection-start-column="1" selection-end-line="107" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -156,6 +157,28 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="220">
               <caret line="55" column="8" lean-forward="false" selection-start-line="55" selection-start-column="8" selection-end-line="58" selection-end-column="60" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Customer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Projekt1/Customer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="230">
+              <caret line="20" column="25" lean-forward="true" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Helper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Projekt1/Helper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="368">
+              <caret line="23" column="23" lean-forward="false" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -220,7 +243,7 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1382" />
@@ -349,7 +372,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ReservationTest.checkWorkingDaysNotAWorkingDayTest">
+  <component name="RunManager" selected="JUnit.ReservationTest">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -370,6 +393,31 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="" />
       <envs />
+    </configuration>
+    <configuration name="ReservationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="Projekt1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="myProjectApp" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="Projekt1" />
+      <option name="MAIN_CLASS_NAME" value="Projekt1.ReservationTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
     </configuration>
     <configuration name="ReservationTest.checkWorkingDaysExpiredTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
@@ -409,31 +457,6 @@
       <option name="PACKAGE_NAME" value="Projekt1" />
       <option name="MAIN_CLASS_NAME" value="Projekt1.ReservationTest" />
       <option name="METHOD_NAME" value="checkWorkingDaysNotAWorkingDayTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-    </configuration>
-    <configuration name="ReservationTest.customConstructorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="Projekt1.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="myProjectApp" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="Projekt1" />
-      <option name="MAIN_CLASS_NAME" value="Projekt1.ReservationTest" />
-      <option name="METHOD_NAME" value="customConstructorTest" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -557,19 +580,19 @@
       <predefined_log_file id="idea.log" enabled="true" />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.ReservationTest.customConstructorTest" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.ReservationTest.wrongHourTest" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.ReservationTest.roomUnavaliableTest" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.ReservationTest.checkWorkingDaysExpiredTest" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.ReservationTest.checkWorkingDaysNotAWorkingDayTest" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.ReservationTest.wrongHourTest" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.ReservationTest.roomUnavaliableTest" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.ReservationTest.checkWorkingDaysExpiredTest" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.ReservationTest.checkWorkingDaysNotAWorkingDayTest" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.ReservationTest" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.ReservationTest.checkWorkingDaysNotAWorkingDayTest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.ReservationTest.checkWorkingDaysExpiredTest" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.ReservationTest.roomUnavaliableTest" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.ReservationTest.wrongHourTest" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.ReservationTest.customConstructorTest" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.ReservationTest" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.ReservationTest.checkWorkingDaysNotAWorkingDayTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.ReservationTest.checkWorkingDaysExpiredTest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.ReservationTest.roomUnavaliableTest" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.ReservationTest.wrongHourTest" />
       </list>
     </recent_temporary>
   </component>
@@ -589,7 +612,7 @@
       <workItem from="1522958091122" duration="3085000" />
       <workItem from="1523013282215" duration="16845000" />
       <workItem from="1523117270699" duration="7228000" />
-      <workItem from="1523128372072" duration="17074000" />
+      <workItem from="1523128372072" duration="18101000" />
     </task>
     <task id="LOCAL-00001" summary="HelperTest methods, some fixes in Room class">
       <created>1523193968517</created>
@@ -619,10 +642,20 @@
       <option name="project" value="LOCAL" />
       <updated>1523197743945</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="added ReservationTests">
+      <created>1523197755327</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1523197755327</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TestHistory">
+    <history-entry file="ReservationTest - 2018.04.08 at 20h 56m 33s.xml">
+      <configuration name="ReservationTest" configurationId="JUnit" />
+    </history-entry>
     <history-entry file="ReservationTest_checkWorkingDaysExpiredTest - 2018.04.08 at 16h 26m 14s.xml">
       <configuration name="ReservationTest.checkWorkingDaysExpiredTest" configurationId="JUnit" />
     </history-entry>
@@ -641,9 +674,6 @@
     <history-entry file="ReservationTest_customConstructorTest - 2018.04.08 at 16h 18m 35s.xml">
       <configuration name="ReservationTest.customConstructorTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ReservationTest_defaultConstructorTest - 2018.04.08 at 16h 05m 30s.xml">
-      <configuration name="ReservationTest.defaultConstructorTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="ReservationTest_roomUnavaliableTest - 2018.04.08 at 16h 23m 42s.xml">
       <configuration name="ReservationTest.roomUnavaliableTest" configurationId="JUnit" />
     </history-entry>
@@ -655,10 +685,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44232000" />
+    <option name="totallyTimeSpent" value="45259000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -669,9 +699,9 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33116883" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23863636" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1852123" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1852123" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1015,16 +1045,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Projekt1/Helper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10">
-          <caret line="23" column="23" lean-forward="false" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.8.2/gson-2.8.2-sources.jar!/com/google/gson/reflect/TypeToken.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="103">
@@ -1047,14 +1067,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="282" lean-forward="false" selection-start-line="0" selection-start-column="278" selection-end-line="0" selection-end-column="282" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Projekt1/Customer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="38" column="26" lean-forward="false" selection-start-line="38" selection-start-column="26" selection-end-line="38" selection-end-column="26" />
           <folding />
         </state>
       </provider>
@@ -1105,23 +1117,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/Projekt1/ReservationTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Projekt1/Customer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="103" column="10" lean-forward="false" selection-start-line="103" selection-start-column="10" selection-end-line="103" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="230">
+          <caret line="20" column="25" lean-forward="true" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Projekt1/Reservation.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Projekt1/Helper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="116" column="83" lean-forward="true" selection-start-line="116" selection-start-column="52" selection-end-line="116" selection-end-column="83" />
+        <state relative-caret-position="368">
+          <caret line="23" column="23" lean-forward="false" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2322#2368#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1133,6 +1142,27 @@
           <folding>
             <element signature="e#497#498#0" expanded="true" />
             <element signature="e#530#531#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Projekt1/Reservation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="100" column="45" lean-forward="true" selection-start-line="100" selection-start-column="45" selection-end-line="100" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2322#2368#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/Projekt1/ReservationTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1357">
+          <caret line="107" column="1" lean-forward="true" selection-start-line="107" selection-start-column="1" selection-end-line="107" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

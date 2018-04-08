@@ -1,0 +1,193 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: Room</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">Projekt1</a> ]
+</div>
+
+<h1>Coverage Summary for Class: Room (Projekt1)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Room</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    57,1%
+  </span>
+  <span class="absValue">
+    (4/ 7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    26,8%
+  </span>
+  <span class="absValue">
+    (15/ 56)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package Projekt1;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.google.gson.Gson;
+<i>4</i>&nbsp;import com.google.gson.JsonArray;
+<i>5</i>&nbsp;import com.google.gson.JsonElement;
+<i>6</i>&nbsp;import com.google.gson.JsonObject;
+<i>7</i>&nbsp;
+<i>8</i>&nbsp;import java.io.IOException;
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;public class Room {
+<i>12</i>&nbsp;
+<b class="fc"><i>13</i>&nbsp;    private static String FILE = &quot;src/main/resources/rooms.json&quot;;</b>
+<i>14</i>&nbsp;    private int roomNumber;
+<i>15</i>&nbsp;    private boolean avaliable;
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;
+<b class="fc"><i>18</i>&nbsp;    public Room(int roomNumber, boolean avaliable) {</b>
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;        try {
+<b class="fc"><i>21</i>&nbsp;            this.roomNumber = roomNumber;</b>
+<b class="fc"><i>22</i>&nbsp;            this.avaliable = avaliable;</b>
+<i>23</i>&nbsp;
+<b class="fc"><i>24</i>&nbsp;            checkIfRoomExistsInJson();</b>
+<i>25</i>&nbsp;
+<i>26</i>&nbsp;            // open existing file
+<b class="nc"><i>27</i>&nbsp;            JsonObject fromFileObject = null;</b>
+<i>28</i>&nbsp;            try {
+<b class="nc"><i>29</i>&nbsp;                fromFileObject = new Gson().fromJson(Helper.readFile(FILE), JsonObject.class);</b>
+<b class="nc"><i>30</i>&nbsp;            } catch (IOException e) {</b>
+<b class="nc"><i>31</i>&nbsp;                e.printStackTrace();</b>
+<b class="nc"><i>32</i>&nbsp;            }</b>
+<b class="nc"><i>33</i>&nbsp;            JsonArray mainObject = fromFileObject.getAsJsonArray(&quot;rooms&quot;);</b>
+<i>34</i>&nbsp;
+<i>35</i>&nbsp;            // Rooms to json
+<b class="nc"><i>36</i>&nbsp;            String reservation = new Gson().toJson(this);</b>
+<b class="nc"><i>37</i>&nbsp;            JsonObject r = new Gson().fromJson(reservation, JsonObject.class);</b>
+<b class="nc"><i>38</i>&nbsp;            mainObject.add(r);</b>
+<i>39</i>&nbsp;            // save it to file
+<b class="nc"><i>40</i>&nbsp;            Helper.updateFile(FILE, fromFileObject);</b>
+<b class="fc"><i>41</i>&nbsp;        } catch (IllegalArgumentException e) {</b>
+<i>42</i>&nbsp;//            e.printStackTrace();
+<b class="fc"><i>43</i>&nbsp;            throw new IllegalArgumentException();</b>
+<b class="nc"><i>44</i>&nbsp;        } catch (IOException e) {</b>
+<b class="nc"><i>45</i>&nbsp;            e.printStackTrace();</b>
+<b class="nc"><i>46</i>&nbsp;        }</b>
+<b class="nc"><i>47</i>&nbsp;    }</b>
+<i>48</i>&nbsp;
+<i>49</i>&nbsp;    public int getRoomNumber() {
+<b class="fc"><i>50</i>&nbsp;        return roomNumber;</b>
+<i>51</i>&nbsp;    }
+<i>52</i>&nbsp;
+<i>53</i>&nbsp;    public static String getFILE() {
+<b class="nc"><i>54</i>&nbsp;        return FILE;</b>
+<i>55</i>&nbsp;    }
+<i>56</i>&nbsp;
+<i>57</i>&nbsp;
+<i>58</i>&nbsp;    public void setAvaliable(boolean avaliable) throws IOException {
+<i>59</i>&nbsp;
+<b class="nc"><i>60</i>&nbsp;        JsonObject fromFileObject = new Gson().fromJson(Helper.readFile(FILE), JsonObject.class);</b>
+<b class="nc"><i>61</i>&nbsp;        JsonArray mainObject = fromFileObject.getAsJsonArray(&quot;rooms&quot;);</b>
+<i>62</i>&nbsp;
+<b class="nc"><i>63</i>&nbsp;        for (JsonElement room : mainObject) {</b>
+<b class="nc"><i>64</i>&nbsp;            if (room.isJsonObject()) {</b>
+<b class="nc"><i>65</i>&nbsp;                JsonObject r = room.getAsJsonObject();</b>
+<b class="nc"><i>66</i>&nbsp;                if (Integer.parseInt(r.get(&quot;roomNumber&quot;).getAsString()) == this.getRoomNumber()) {</b>
+<b class="nc"><i>67</i>&nbsp;                    r.remove(&quot;avaliable&quot;);</b>
+<b class="nc"><i>68</i>&nbsp;                    r.addProperty(&quot;avaliable&quot;, avaliable);</b>
+<i>69</i>&nbsp;                }
+<i>70</i>&nbsp;            }
+<b class="nc"><i>71</i>&nbsp;        }</b>
+<b class="nc"><i>72</i>&nbsp;        Helper.updateFile(FILE, fromFileObject);</b>
+<b class="nc"><i>73</i>&nbsp;    }</b>
+<i>74</i>&nbsp;
+<i>75</i>&nbsp;    public boolean isAvaliable() throws IOException {
+<b class="nc"><i>76</i>&nbsp;        boolean isAvaliable = false;</b>
+<b class="nc"><i>77</i>&nbsp;        JsonObject fromFileObject = new Gson().fromJson(Helper.readFile(FILE), JsonObject.class);</b>
+<b class="nc"><i>78</i>&nbsp;        JsonArray mainObject = fromFileObject.getAsJsonArray(&quot;rooms&quot;);</b>
+<i>79</i>&nbsp;
+<b class="nc"><i>80</i>&nbsp;        for (JsonElement room : mainObject) {</b>
+<b class="nc"><i>81</i>&nbsp;            if (room.isJsonObject()) {</b>
+<b class="nc"><i>82</i>&nbsp;                JsonObject r = room.getAsJsonObject();</b>
+<b class="nc"><i>83</i>&nbsp;                if (Integer.parseInt(r.get(&quot;roomNumber&quot;).getAsString()) == this.getRoomNumber()) {</b>
+<b class="nc"><i>84</i>&nbsp;                    isAvaliable = Boolean.parseBoolean(r.get(&quot;avaliable&quot;).getAsString());</b>
+<i>85</i>&nbsp;                }
+<i>86</i>&nbsp;            }
+<b class="nc"><i>87</i>&nbsp;        }</b>
+<b class="nc"><i>88</i>&nbsp;        return isAvaliable;</b>
+<i>89</i>&nbsp;    }
+<i>90</i>&nbsp;
+<i>91</i>&nbsp;
+<i>92</i>&nbsp;    public void checkIfRoomExistsInJson() throws IllegalArgumentException {
+<i>93</i>&nbsp;        try {
+<b class="fc"><i>94</i>&nbsp;            JsonObject fromFileObject = new Gson().fromJson(Helper.readFile(FILE), JsonObject.class);</b>
+<b class="fc"><i>95</i>&nbsp;            JsonArray mainObject = fromFileObject.getAsJsonArray(&quot;rooms&quot;);</b>
+<i>96</i>&nbsp;
+<b class="fc"><i>97</i>&nbsp;            for (JsonElement room : mainObject) {</b>
+<b class="fc"><i>98</i>&nbsp;                if (room.isJsonObject()) {</b>
+<b class="fc"><i>99</i>&nbsp;                    JsonObject r = room.getAsJsonObject();</b>
+<b class="fc"><i>100</i>&nbsp;                    if (r.get(&quot;roomNumber&quot;).getAsInt() == this.getRoomNumber()) {</b>
+<b class="fc"><i>101</i>&nbsp;                        throw new IllegalArgumentException(&quot;Pokój jest ju¿ na liœcie.&quot;);</b>
+<i>102</i>&nbsp;                    }
+<i>103</i>&nbsp;                }
+<b class="nc"><i>104</i>&nbsp;            }</b>
+<b class="nc"><i>105</i>&nbsp;        } catch (IOException e) {</b>
+<b class="nc"><i>106</i>&nbsp;            e.printStackTrace();</b>
+<b class="nc"><i>107</i>&nbsp;        }</b>
+<b class="nc"><i>108</i>&nbsp;    }</b>
+<i>109</i>&nbsp;
+<i>110</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2018-04-08 11:20</div>
+</div>
+</body>
+</html>

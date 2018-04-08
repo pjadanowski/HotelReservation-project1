@@ -1,0 +1,127 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: App</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">Projekt1</a> ]
+</div>
+
+<h1>Coverage Summary for Class: App (Projekt1)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">App</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (1/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    20%
+  </span>
+  <span class="absValue">
+    (2/ 10)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package Projekt1;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.google.gson.Gson;
+<i>4</i>&nbsp;import com.google.gson.JsonObject;
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;import java.io.File;
+<i>7</i>&nbsp;import java.text.SimpleDateFormat;
+<i>8</i>&nbsp;import java.time.LocalDate;
+<i>9</i>&nbsp;import java.time.LocalTime;
+<i>10</i>&nbsp;import java.time.Period;
+<i>11</i>&nbsp;import java.time.format.DateTimeFormatter;
+<i>12</i>&nbsp;
+<i>13</i>&nbsp;/**
+<i>14</i>&nbsp; * Hotel Reservation System
+<i>15</i>&nbsp; * @author Pawel Jadanowski
+<i>16</i>&nbsp; */
+<b class="nc"><i>17</i>&nbsp;public class App </b>
+<i>18</i>&nbsp;{
+<i>19</i>&nbsp;    public static void main( String[] args )
+<i>20</i>&nbsp;    {
+<b class="fc"><i>21</i>&nbsp;        Customer c1 = new Customer(&quot;Kazik&quot;, &quot;Jakistam&quot;, &quot;kjakistam@ss.ss&quot;);</b>
+<b class="fc"><i>22</i>&nbsp;        Room r100 = new Room(100, true);</b>
+<b class="nc"><i>23</i>&nbsp;        Room r101 = new Room(101, true);</b>
+<b class="nc"><i>24</i>&nbsp;        Room r102 = new Room(102, true);</b>
+<i>25</i>&nbsp;//        r100.markRoomAsUnavaliable();
+<i>26</i>&nbsp;
+<i>27</i>&nbsp;//        Reservation reservation = new Reservation(c1, r101, LocalDate.of(2018 ,4,1),
+<i>28</i>&nbsp;//                LocalDate.of(2018 ,4,10), LocalTime.of(10,0));
+<i>29</i>&nbsp;
+<i>30</i>&nbsp;
+<i>31</i>&nbsp;//        c1.printReservedRooms();
+<i>32</i>&nbsp;//                Reservation reservation = new Reservation(c1, r102, LocalDate.of(2018 ,4,7),
+<i>33</i>&nbsp;//                LocalDate.of(2018 ,4,10), LocalTime.of(10,0));
+<i>34</i>&nbsp;
+<i>35</i>&nbsp;//        c1.printReservedRooms();
+<b class="nc"><i>36</i>&nbsp;        String FILE = &quot;src/main/resources/rooms.json&quot;;</b>
+<b class="nc"><i>37</i>&nbsp;        File file = new File(FILE);</b>
+<i>38</i>&nbsp;//        JsonObject fromFileObject = new Gson().fromJson(r100.readFile(FILE), JsonObject.class);
+<i>39</i>&nbsp;//        r100.setAvaliable(true);
+<i>40</i>&nbsp;//        r100.updateFile(fromFileObject);
+<b class="nc"><i>41</i>&nbsp;        SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy-mm-dd HH:mm:ss&quot;);</b>
+<b class="nc"><i>42</i>&nbsp;        System.out.println(sdf.format(file.lastModified()));</b>
+<b class="nc"><i>43</i>&nbsp;    }</b>
+<i>44</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2018-04-08 11:20</div>
+</div>
+</body>
+</html>
