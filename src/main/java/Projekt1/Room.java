@@ -60,7 +60,7 @@ public class Room {
     }
 
 
-    public void checkIfRoomExistsInJson() throws IllegalArgumentException {
+    public boolean checkIfRoomExistsInJson() throws IllegalArgumentException {
         try {
             JsonObject fromFileObject = new Gson().fromJson(Helper.readFile(FILE), JsonObject.class);
             JsonArray mainObject = fromFileObject.getAsJsonArray("rooms");
@@ -73,8 +73,10 @@ public class Room {
                     }
                 }
             }
+            return true;
         } catch (IOException e) {
             e.printStackTrace();
+            return false;
         }
     }
 

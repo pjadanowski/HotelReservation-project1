@@ -52,12 +52,35 @@ public class RoomTest {
                 () -> Helper.readFile("nie_ma_takiego_pliku.json"));
     }
 
-
     @Test
     void checkIfRoomExistsInJsonTest() {
 
         Room r100 = new Room(100, true);
+        try {
+            assertTrue(r100.checkIfRoomExistsInJson());
+        } catch (IllegalArgumentException e) {
+            assertThrows(IllegalArgumentException.class,
+                    () -> r100.checkIfRoomExistsInJson());
+        }
+    }
+
+    @Test
+    void checkIfRoomExistsInJsonExceptionTest() {
+
+        Room r100 = new Room(100, true);
         assertThrows(IllegalArgumentException.class,
                 () -> r100.checkIfRoomExistsInJson());
+    }
+
+    @Test
+    void saveRoomToJsonTest() {
+        Room r120 = new Room(120, true);
+        try {
+            r120.saveRoomToJson();
+        } catch (IllegalArgumentException e) {
+            assertTrue(r120.checkIfRoomExistsInJson());
+        };
+
+
     }
 }
