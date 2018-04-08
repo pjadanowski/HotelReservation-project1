@@ -1,8 +1,0 @@
-{
-  "customers": [
-    {"firstname":"Jan", "lastname":"Kowalski", "email":"jkowalski@mail.com"},
-    {"firstname":"Joanna", "lastname":"Walach", "email":"jwalach@mail.com"},
-    {"firstname":"Kazik", "lastname":"Jakistam", "email":"kazik@mail.com"}
-  ]
-}
-
