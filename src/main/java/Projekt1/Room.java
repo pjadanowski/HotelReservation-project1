@@ -41,6 +41,8 @@ public class Room {
         } catch (IllegalArgumentException e) {
 //            e.printStackTrace();
             throw new IllegalArgumentException();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

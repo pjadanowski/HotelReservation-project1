@@ -6,6 +6,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
 import java.io.IOException;
 import java.nio.file.NoSuchFileException;
@@ -72,7 +73,8 @@ public class RoomTest {
             // check if updated contains room updated
             assertThat(ava, is(false));
         } catch (IllegalArgumentException e) {
-            assertTrue(true);
+//            assertTrue(true);
+            assertThrows(IllegalArgumentException.class, (Executable) e);
         }
 
     }

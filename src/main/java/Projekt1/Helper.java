@@ -21,13 +21,16 @@ public class Helper {
     }
 
 
-    public static void updateFile(String FILE, JsonObject jsonObject){
-        try {
-            FileWriter fileWriter = new FileWriter(new File(FILE));
-            fileWriter.write(jsonObject.toString());
-            fileWriter.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+    public static void updateFile(String FILE, JsonObject jsonObject) throws IOException{
+
+        File file = new File(FILE);
+        if(!file.exists() && !file.isDirectory()) {
+            throw new IOException("Podany plik nie istnieje.");
         }
+
+        FileWriter fileWriter = new FileWriter(file);
+        fileWriter.write(jsonObject.toString());
+        fileWriter.close();
+
     }
 }
